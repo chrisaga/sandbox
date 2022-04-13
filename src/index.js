@@ -19,55 +19,45 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 // Initial set of users to populate the database with
 var defaultUsers = [
   { name: "Brad Pitt" },
-  { name: "Ed Norton" },
+  { name: "Ted Norton" },
   { name: "Denzel Washington" }
 ];
 // Clear the databaase
-db.get("users")
-  .remove()
-  .write();
+db.get("users").remove().write();
 // Put defualt users in the users list
-defaultUsers.forEach(function(user) {
-  db.get("users")
-    .push({ name: user.name })
-    .write();
+defaultUsers.forEach(function (user) {
+  db.get("users").push({ name: user.name }).write();
 });
 
 // Send user data - used by client.js
-app.get("/users", function(request, response) {
+app.get("/users", function (request, response) {
   var users = db.get("users").value(); // finds all entries in the users table
   response.send(users); // sends users back to the page
 });
 
 // Create a new entry in the users table
-app.post("/new", urlencodedParser, function(request, response) {
-  db.get("users")
-    .push({ name: request.body.user })
-    .write();
+app.post("/new", urlencodedParser, function (request, response) {
+  db.get("users").push({ name: request.body.user }).write();
   response.redirect("/");
 });
 
 // Empties the database and re-populates users with the default users
-app.get("/reset", function(request, response) {
+app.get("/reset", function (request, response) {
   // Clear the databaase
-  db.get("users")
-    .remove()
-    .write();
+  db.get("users").remove().write();
   // Set the database up again
-  defaultUsers.forEach(function(user) {
-    db.get("users")
-      .push({ name: user.name })
-      .write();
+  defaultUsers.forEach(function (user) {
+    db.get("users").push({ name: user.name }).write();
   });
   response.redirect("/");
 });
 
 // Serve the root url: http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function(request, response) {
+app.get("/", function (request, response) {
   response.sendFile(path.join(srcPath, "views", "index.html"));
 });
 
 // Listen on port 8080
-var listener = app.listen(8080, function() {
+var listener = app.listen(8080, function () {
   console.log("Listening on port " + listener.address().port);
 });
