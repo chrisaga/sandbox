@@ -1,20 +1,13 @@
 {
   "users": [
     {
-      "first_name": "Brad",
-      "last_name": "Pitt"
+      "name": "Brad Pitt"
     },
     {
-      "first_name": "Ed",
-      "last_name": "Norton"
+      "name": "Ed Norton"
     },
     {
-      "first_name": "Denzel",
-      "last_name": "Washington"
-    },
-    {
-      "first_name": "C",
-      "last_name": "D"
+      "name": "Denzel ashington"
     }
   ]
 }
