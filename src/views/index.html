@@ -13,7 +13,7 @@
   <body>
     <header>
       <h1>
-        Users
+        Collaborateurs
       </h1>
     </header>
 
@@ -24,13 +24,20 @@
         enctype="application/x-www-form-urlencoded"
       >
         <input
-          name="user"
+          name="first_name"
           type="text"
           maxlength="100"
           value=""
-          placeholder="Add a user"
+          placeholder="Prénom"
         />
-        <button type="submit">Add</button>
+        <input
+          name="last_name"
+          type="text"
+          maxlength="100"
+          value=""
+          placeholder="Nom"
+        />
+        <button type="submit">Ajouter</button>
       </form>
       <section class="users">
         <ul id="users"></ul>
