@@ -1,8 +1,8 @@
 $(function () {
   $.get("/users", function (users) {
     users.forEach(function (user) {
-      var line = `${user.first_name} ${user.last_name}`;
-      $("<li></li>").text(line).appendTo("ul#users");
+      var line = `<td>${user.first_name}</td><td>${user.last_name}</td>`;
+      $("<tr></tr>").html(line).appendTo("table#users");
     });
   });
 });
