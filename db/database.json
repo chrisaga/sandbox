@@ -2,15 +2,18 @@
   "users": [
     {
       "first_name": "Brad",
-      "last_name": "Pitt"
+      "last_name": "Pitt",
+      "position": "Dev full stack"
     },
     {
       "first_name": "Ed",
-      "last_name": "Norton"
+      "last_name": "Norton",
+      "position": "UX designer"
     },
     {
       "first_name": "Denzel",
-      "last_name": "Washington"
+      "last_name": "Washington",
+      "position": "DBA"
     }
   ]
 }

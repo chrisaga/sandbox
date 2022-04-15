@@ -18,16 +18,20 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Initial set of users to populate the database with
 var defaultUsers = [
-  { first_name: "Brad", last_name: "Pitt" },
-  { first_name: "Ed", last_name: "Norton" },
-  { first_name: "Denzel", last_name: "Washington" }
+  { first_name: "Brad", last_name: "Pitt", position: "Dev full stack" },
+  { first_name: "Ed", last_name: "Norton", position: "UX designer" },
+  { first_name: "Denzel", last_name: "Washington", position: "DBA" }
 ];
 // Clear the databaase
 db.get("users").remove().write();
 // Put defualt users in the users list
 defaultUsers.forEach(function (user) {
   db.get("users")
-    .push({ first_name: user.first_name, last_name: user.last_name })
+    .push({
+      first_name: user.first_name,
+      last_name: user.last_name,
+      position: user.position
+    })
     .write();
 });
 
@@ -42,7 +46,8 @@ app.post("/new", urlencodedParser, function (request, response) {
   db.get("users")
     .push({
       first_name: request.body.first_name,
-      last_name: request.body.last_name
+      last_name: request.body.last_name,
+      position: request.body.position
     })
     .write();
   response.redirect("/");
@@ -55,7 +60,11 @@ app.get("/reset", function (request, response) {
   // Set the database up again
   defaultUsers.forEach(function (user) {
     db.get("users")
-      .push({ first_name: user.first_name, last_name: user.last_name })
+      .push({
+        first_name: user.first_name,
+        last_name: user.last_name,
+        position: user.position
+      })
       .write();
   });
   response.redirect("/");
